@@ -1,0 +1,78 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#wrapper{
+     height: 100vh;
+     overflow-x: hidden;
+     overflow-y: auto;
+}
+
+.container{
+    height: 100%; /* i.e. height will be 100% of 100vh(i.e. of wrapper div, as it's the parent div of this div. */
+    max-width: 1200px;
+    margin: 0 auto; /* to center the container in the middle, 0 auto is used to euqalize the left and right margin. */
+    padding: 20px;
+}
+
+.container h1{    /* the particular h1 tag inside the container class. */
+    margin: 20px 0; /* first one denotes top and bottom margins, while the second one denotes left and right margin. */
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 3rem;
+}
+
+.gallery{
+    display: flex;
+    flex-wrap: wrap; /* so that all the images aren't lined up in a single row */
+    justify-content: space-between;
+}
+
+.card{
+    width: 32%; /* as we want to place three images in a row, so 32+32+32=96, now rest of the 4% will be used for spacing between the images. */
+    position: relative; /* as we want to impose text on image, which will be done using absolute, which means nearest ancestor to be in non-static position. */
+    margin-bottom: 20px;
+    border-radius: 10px; /* for curvature near the edges of the card. */
+    overflow: hidden;
+}
+
+.card img{ /* card div ke andar jo img tag hai */
+    height: 100%; /* so as we'll have rounded corner of the image, as 100% height means height eqaul to the height of the parent element, and as the parent element had rounded corners thus the image too will have rounded corners. */
+    width: 100%; /* width will be equal to the width of the parent element. */
+    filter: grayscale(100%);
+    box-shadow: 0 0 20px #333;
+    object-fit: cover;
+}
+
+.card:hover{
+    transform: scale(1.03);
+    filter: drop-shadow(0 0 10px #333); /* to create a shadow effect on hovering. */
+    transition: 0.3s;
+}
+
+.card:hover img{
+    filter: grayscale(0%);
+}
+
+.card figcaption{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 25px;
+    width: 100%;
+    height: 20%;
+    font-size: 16px;
+    font-weight: 500;
+    color: #fff;
+    opacity: 0;
+    border-radius: 0 0 10px 10px;
+    background: linear-gradient(0deg,rgba(0,0,0,0.5)0%,rgba(255,255,255,0)100%);
+    transition: 0.3s;
+}
+
+.card:hover figcaption{
+    opacity: 1;
+    transform: scale(1.03);
+}
